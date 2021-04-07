@@ -17,6 +17,6 @@ describe('<Event/> component', () => {
         expect(EventWrapper.find('.button')).toHaveLength(1);
     })
     test('render wrapper content', () => {
-        expect(EventWrapper.find('.summary').contains(<div>Testing</div>)).to.equal(true);
+        expect(EventWrapper.find('.summary').contains(summary)).toBe(true);
 })
 })
