@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
          <EventList />
          <CitySearch />
-         <Event />
+         <Event/>
       </div>
     );
   }

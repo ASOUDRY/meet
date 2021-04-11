@@ -5,9 +5,9 @@ import { mockData } from '../mockData';
 import { extractSummary } from "../api";
 
 describe('<Event/> component', () => {
-    let EventWrapper, summary;
+    let EventWrapper, Summary;
     beforeAll(() => {
-        summary = extractSummary(mockData)
+        Summary = extractSummary(mockData)
         EventWrapper = shallow(<Event/>)
     })
     test('render initial box', () => {
@@ -17,6 +17,6 @@ describe('<Event/> component', () => {
         expect(EventWrapper.find('.button')).toHaveLength(1);
     })
     test('render wrapper content', () => {
-        expect(EventWrapper.find('.summary').contains(summary)).toBe(true);
+        expect(EventWrapper.find('.summary').contains(Summary)).toBe(true);
 })
 })
