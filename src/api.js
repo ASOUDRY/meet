@@ -17,3 +17,9 @@ export const extractSummary = (events) => {
   var summary = [...new Set(extractSummary)];
   return summary;
 };
+
+export const extractUpdate = (events) => {
+  var extractUpdated = events.map((event) => event.updated);
+  var update = [...new Set(extractUpdated)];
+  return update;
+};

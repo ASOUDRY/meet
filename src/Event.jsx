@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { mockData } from './mockData';
 
 class Event extends Component {
-  render() {
+  
+   render() {  
     return <div className="event">
-      <h3 className="summary">{mockData[0].summary}</h3>
+      <h3 className="summary">{this.props.event.summary}</h3>
+      <h4 className="content" >{this.props.event.updated}</h4>
+      <h4 className="location" >{this.props.event.location}</h4>
       <button type="button" className="button">Show Details</button>
     </div>;
   }

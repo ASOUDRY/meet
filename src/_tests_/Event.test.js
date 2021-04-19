@@ -1,14 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Event from '../Event';
+import PropTypes from 'prop-types';
 import { mockData } from '../mockData';
-import { extractSummary } from "../api";
+import { extractSummary, extractUpdate, extractLocations } from "../api";
 
 describe('<Event/> component', () => {
-    let EventWrapper, Summary;
+    let EventWrapper, Summary, Update, locations
     beforeAll(() => {
-        Summary = extractSummary(mockData)
-        EventWrapper = shallow(<Event/>)
+        console.log(this.props.event)
+        Summary = extractSummary(mockData),
+        Update = extractUpdate(mockData),
+        locations = extractLocations(mockData)
+        EventWrapper = shallow(<Event />)
     })
     test('render initial box', () => {
         expect(EventWrapper.find('.event')).toHaveLength(1);
@@ -17,6 +21,12 @@ describe('<Event/> component', () => {
         expect(EventWrapper.find('.button')).toHaveLength(1);
     })
     test('render wrapper content', () => {
-        expect(EventWrapper.find('.summary').contains(Summary)).toBe(true);
-})
+        expect(EventWrapper.find('.summary').props()).toMatchObject(Summary);
+    })
+    test('render wrapper content 2', () => {
+        expect(EventWrapper.find('.content').props()).toMatchObject(Update);
+    })
+    test('render wrapper content 3', () => {
+        expect(EventWrapper.find('.location').props()).toMatchObject(Location);
+    })
 })
