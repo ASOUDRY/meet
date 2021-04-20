@@ -3,11 +3,12 @@ import Event from './Event';
 
 class EventList extends Component {
   render() {
+    let test = "test";
   return (
     <ul className="EventList">
       {this.props.events.map(event =>
         <li key={event.id}>
-          <Event event={event} />
+          <Event event={event} test={test}  />
         </li>
       )}
     </ul>
