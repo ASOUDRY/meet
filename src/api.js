@@ -12,14 +12,8 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-export const extractSummary = (events) => {
+export const extractTitle = (events) => {
   var extractSummary = events.map((event) => event.summary);
   var summary = [...new Set(extractSummary)];
   return summary;
-};
-
-export const extractUpdate = (events) => {
-  var extractUpdated = events.map((event) => event.updated);
-  var update = [...new Set(extractUpdated)];
-  return update;
 };
