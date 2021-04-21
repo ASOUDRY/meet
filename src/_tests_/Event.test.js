@@ -9,11 +9,14 @@ describe('<Event/> component', () => {
     let EventWrapper, Summary, Update, locations
     // let event = this.props.event
     beforeAll(() => {
-        // console.log(event)
+         console.log(this.props.event);
+         console.log(event);
+         console.log(this.props.nope);
+         console.log(nope);
         Summary = extractSummary(mockData),
         Update = extractUpdate(mockData),
         locations = extractLocations(mockData)
-        EventWrapper = shallow(<Event />)
+        EventWrapper = shallow(<Event event={mockData0} nope={nope} />)
     })
     test('render initial box', () => {
         expect(EventWrapper.find('.event')).toHaveLength(1);
