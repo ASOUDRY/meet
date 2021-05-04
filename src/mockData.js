@@ -29,7 +29,7 @@ const mockData = [
    "creator": {
     "email": "fullstackwebdev@careerfoundry.com",
     "self": true
-   }
+   },
 }];
 
 export { mockData };

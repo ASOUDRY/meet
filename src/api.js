@@ -1,3 +1,5 @@
+import { mockData } from "./mockData";
+
 /**
  *
  * @param {*} events:
@@ -17,3 +19,7 @@ export const extractTitle = (events) => {
   var summary = [...new Set(extractSummary)];
   return summary;
 };
+
+export const getEvents = async () => {
+  return mockData;
+}

@@ -1,16 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import CitySearch from '../CitySearch';
-import { mockData } from "../mockData";
+import { mockData, getEvents } from "../mockData";
 import { extractLocations } from "../api";
+import App from "../App.jsx"
 
 describe('<CitySearch /> component', () => {
   let locations, CitySearchWrapper;
   beforeAll(() => {
-   
     locations = extractLocations(mockData)
     // console.log(locations);
-    CitySearchWrapper = shallow(<CitySearch locations={locations}/>)
+    CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}}/>)
   })
   test('render text input', () => {
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
