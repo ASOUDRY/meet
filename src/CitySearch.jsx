@@ -9,22 +9,24 @@ class CitySearch extends Component {
 
   handleInputChanged = (event) => {
     const value = event.target.value;
-    console.log(value);
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
 
-    console.log(suggestions);
+    
 
   this.isClicked = (suggestion) => {
     this.setState({
-      query: suggestion
+      query: suggestion,
+      suggestions: []
     });
+
+    this.props.updateEvents(suggestion);
   }
     
     this.setState({
       query: value,
-      suggestions,
+      suggestions: suggestions
     });
   };
 
@@ -36,9 +38,8 @@ class CitySearch extends Component {
     this.props.updateEvents(suggestion);
   }
 
-
   render() {
-    // console.log(this.state.suggestions);
+    console.log(this.state.suggestions);
     return (
       <div className="CitySearch">
           <input
@@ -48,11 +49,14 @@ class CitySearch extends Component {
         onChange={this.handleInputChanged}
       />
        <ul className="suggestions">
+       
           {this.state.suggestions.map((suggestion) => (
             <li key={suggestion} onClick={() => this.isClicked(suggestion)}>
                 {suggestion}
             </li>
           ))}
+        </ul>
+        <ul>
             <li className="all" onClick={() => this.handleItemClicked("all")}>
               <b>See all cities</b>
             </li>

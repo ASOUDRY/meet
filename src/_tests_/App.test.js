@@ -48,12 +48,15 @@ beforeAll(() => {
   //   AppWrapper.unmount();
   // });
 
-  // test('get list of all events when user selects "See all cities"', async () => {
-  //   const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions').find('.all');
-  //   await suggestionItems.at(suggestionItems.length - 1).simulate('click');
-  //   const allEvents = await getEvents();
-  //   expect(AppWrapper.state('events')).toEqual(allEvents);
-  //   AppWrapper.unmount();
-  // });
+  test('get list of all events when user selects "See all cities"', async () => {
+    
+    expect(AppWrapper.find(CitySearch).find('.CitySearch')).toHaveLength(2);
+    
+    // const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions').find('.all');
+    // await suggestionItems.at(suggestionItems.length - 1).simulate('click');
+    // const allEvents = await getEvents();
+    // expect(AppWrapper.state('events')).toEqual(allEvents);
+    AppWrapper.unmount();
+  });
   
 });
