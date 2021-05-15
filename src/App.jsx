@@ -9,7 +9,7 @@ import "./nprogress.css";
 
 class App extends Component {
 state = {
-  events: mockData,
+  events: getEvents,
   locations: extractLocations(mockData)
 }
 

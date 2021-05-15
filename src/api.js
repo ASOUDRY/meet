@@ -1,5 +1,6 @@
 import { mockData } from "./mockData";
 import axios from 'axios';
+import NProgress from 'nprogress';
 
 /**
  *
@@ -43,7 +44,7 @@ export const getEvents = async () => {
 
   if (token) {
     removeQuery();
-    const url = `YOUR_GET_EVENTS_API_ENDPOINT/${token}`;
+    const url = `https://k3f3961h55.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
@@ -58,6 +59,7 @@ export const getEvents = async () => {
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
+  const tokenCheck = accessToken && (await checkToken(accessToken));
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
