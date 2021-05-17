@@ -65,8 +65,9 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
+      // trying a slightly different url
       const results = await axios.get(
-        "https://k3f3961h55.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+        "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=895193534029-j1l6kr4ic9b3gc5or0gp9h38btjpfhci.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fasoudry.github.io%2Fmeet%2F"
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
