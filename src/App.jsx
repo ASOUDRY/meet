@@ -12,9 +12,22 @@ import "./nprogress.css";
 
 class App extends Component {
 state = {
-  events: mockData,
+  events: [],
   locations: extractLocations(mockData),
   number: mockData.length
+}
+
+
+componentDidMount() {
+  this.addEvents()
+}
+
+addEvents = () => {
+  getEvents().then((results) => {
+    this.setState({
+      events: results
+    })
+  })
 }
 
 updateEvents = (location) => {
@@ -31,8 +44,6 @@ updateEvents = (location) => {
     console.log(this.state.number);
   })
 }
-
-
 
 render() {
     return (
