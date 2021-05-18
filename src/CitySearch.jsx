@@ -39,7 +39,6 @@ class CitySearch extends Component {
   }
 
   render() {
-    console.log(this.state.suggestions);
     return (
       <div className="CitySearch">
           <input
@@ -49,15 +48,14 @@ class CitySearch extends Component {
         onChange={this.handleInputChanged}
       />
        <ul className="suggestions">
-       
           {this.state.suggestions.map((suggestion) => (
             <li key={suggestion} onClick={() => this.isClicked(suggestion)}>
                 {suggestion}
             </li>
           ))}
         </ul>
-        <ul>
-            <li className="all" onClick={() => this.handleItemClicked("all")}>
+        <ul className="all" >
+            <li onClick={() => this.handleItemClicked("all")}>
               <b>See all cities</b>
             </li>
       </ul>

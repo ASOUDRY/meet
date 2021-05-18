@@ -16,6 +16,9 @@ export class Event extends React.Component {
     this.setState({show: false});
   }
    render() {  
+
+console.log(this.props.event.summary)
+
     return  (
       <div>
         <div className="event">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import CitySearch from '../CitySearch';
-import { mockData, getEvents } from "../mockData";
+import { mockData } from "../mockData";
 import { extractLocations } from "../api";
 import App from "../App.jsx"
 
@@ -34,7 +34,7 @@ describe('<CitySearch /> component', () => {
     const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
-    expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
+    expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length);
     for (let i = 0; i < suggestions.length; i += 1) {
       expect(CitySearchWrapper.find('.suggestions li').at(i).text()).toBe(suggestions[i]);
     }

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 class NumberOfEvents extends Component {
+  
+  changeInput = () => {
+    console.log(this.value);
+  }
+
   render() {
     return (
       <div className="numberOfEvents">
@@ -8,6 +13,7 @@ class NumberOfEvents extends Component {
         <input
           type="number"
           value={this.props.length}
+          onChange={this.changeInput}
         />
       </div>
     );
