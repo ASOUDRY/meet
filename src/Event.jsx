@@ -5,24 +5,22 @@ import Button from 'react-bootstrap/Button'
 export class Event extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { show: false };
+    this.state = { 
+      show: false,
+      event: this.props.event 
+    };
   }
-  
   open(e) {
    this.setState({show: true})
-   console.log(this.state.show);
   }
   close(e) {
     this.setState({show: false});
   }
    render() {  
-
-console.log(this.props.event.summary)
-
     return  (
       <div>
         <div className="event">
-            <h3 className="summary">{this.props.event.summary}</h3>
+            {/* <h3 className="summary">{this.state.event.summary}</h3> */}
             <h3 className="location">{this.props.event.location}</h3>
             <button type="button" className="button" onClick={() => this.open()}>Show Details</button>
             <Modal show={this.state.show} >
