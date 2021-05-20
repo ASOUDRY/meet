@@ -9,15 +9,20 @@ import { getEvents, extractLocations } from './api';
 import "./nprogress.css";
 
 class App extends Component {
-state = {
-  events: [],
-  locations: extractLocations(mockData),
-  number: mockData.length,
-  storage: []
-}
+  constructor() {
+    super()
+    this.state = {
+      events: [],
+      locations: extractLocations(mockData),
+      number: mockData.length,
+      storage: []
+    }
+  }
+
 
 componentDidMount() {
   getEvents().then((first) => {
+   
     this.setState({
       events: first,
       storage: first
@@ -39,22 +44,22 @@ updateEvents = (location) => {
 }
 
 passNumber = (number) => {
-  getEvents().then((results) => {
-    let filtering = results.length
-    if (results.length === number) {
+  getEvents().then((event) => {
+    let filtering = event.length
+    if (event.length === number) {
       this.setState({
-        events: results
+        events: event
       })
     }
-    else if (results.length > number) {
+    else if (event.length > number) {
       console.log(this.state.storage)
       for (number; filtering > number; number++) {
-        results.shift()
+        event.shift()
         console.log(this.state.storage)
       }
       console.log(this.state.storage)
       this.setState({
-        events: results
+        events: event
       })
     }
     else {
