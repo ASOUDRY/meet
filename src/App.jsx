@@ -28,12 +28,10 @@ componentDidMount() {
       number: first.length,
       locations: extractLocations(first)
     })
-    console.log(this.state.number)
   })
 }
 
 updateEvents = (location) => {
-  console.log(location)
   getEvents().then((events) => {
     const locationEvents = (location === 'all') ?
     events :
@@ -77,7 +75,6 @@ componentWillUnmount() {
 }
 
 render() {
-  console.log(this.state.locations);
     return (
       <div className="App">
          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}  />
