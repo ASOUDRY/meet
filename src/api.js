@@ -56,6 +56,7 @@ var locations
       for (i; i > 32; i--) {
         filtered.pop()
       }
+      console.log(filtered)
     }
 
     if (filtered) {
