@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOFEvents from './NumberofEvents';
-import { mockData } from './mockData';
+// import { mockData } from './mockData';
 import { getEvents, extractLocations } from './api';
 import "./nprogress.css";
 
@@ -13,8 +13,8 @@ class App extends Component {
     super()
     this.state = {
       events: [],
-      locations: extractLocations(mockData),
-      number: mockData.length,
+      locations: [],
+      number: [],
       storage: []
     }
   }
@@ -22,11 +22,13 @@ class App extends Component {
 
 componentDidMount() {
   getEvents().then((first) => {
-   
     this.setState({
       events: first,
-      storage: first
+      storage: first,
+      number: first.length,
+      locations: extractLocations(first)
     })
+    console.log(this.state.number)
   })
 }
 
@@ -75,6 +77,7 @@ componentWillUnmount() {
 }
 
 render() {
+  console.log(this.state.locations);
     return (
       <div className="App">
          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}  />

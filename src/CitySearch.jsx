@@ -39,6 +39,7 @@ class CitySearch extends Component {
   }
 
   render() {
+    console.log(this.props.locations)
     return (
       <div className="CitySearch">
           <input

@@ -3,14 +3,14 @@ import React, { Component } from "react";
 class NumberOfEvents extends Component {
   
   state = {
-    number: []
+    number: this.props.length
   }
 
-  componentDidMount() {
-    this.setState({
-      number: this.props.length
-    })
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     number: this.props.length
+  //   })
+  // }
 
 
   changeInput = (event) => {
@@ -22,7 +22,7 @@ class NumberOfEvents extends Component {
   }
 
   render() {
-    
+    console.log(this.state.number)
     return (
       <div className="numberOfEvents">
         <h1>Number of Events:</h1>
