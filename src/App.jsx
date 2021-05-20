@@ -12,18 +12,21 @@ class App extends Component {
 state = {
   events: [],
   locations: extractLocations(mockData),
-  number: mockData.length
+  number: mockData.length,
+  storage: []
 }
 
 componentDidMount() {
-  getEvents().then((results) => {
+  getEvents().then((first) => {
     this.setState({
-      events: results
+      events: first,
+      storage: first
     })
   })
 }
 
 updateEvents = (location) => {
+  console.log(location)
   getEvents().then((events) => {
     const locationEvents = (location === 'all') ?
     events :
@@ -32,6 +35,30 @@ updateEvents = (location) => {
       events: locationEvents,
       number: locationEvents.length
     })
+  })
+}
+
+passNumber = (number) => {
+  getEvents().then((results) => {
+    let filtering = results.length
+    if (results.length === number) {
+      this.setState({
+        events: results
+      })
+    }
+    else if (results.length > number) {
+      console.log(this.state.storage)
+      for (number; filtering > number; number++) {
+        results.shift()
+        console.log(this.state.storage)
+      }
+      console.log(this.state.storage)
+      this.setState({
+        events: results
+      })
+    }
+    else {
+  }
   })
 }
 
@@ -46,7 +73,7 @@ render() {
     return (
       <div className="App">
          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}  />
-         <NumberOFEvents length={this.state.number}/>
+         <NumberOFEvents length={this.state.number} passNumber={this.passNumber}/>
          <EventList events={this.state.events} filterEvents={this.filterEvents} />
       </div>
     )
