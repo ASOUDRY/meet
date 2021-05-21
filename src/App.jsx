@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       events: [],
       locations: [],
-      number: [],
+      number: 32,
       storage: []
     }
   }
@@ -22,6 +22,7 @@ class App extends Component {
 
 componentDidMount() {
   getEvents().then((first) => {
+    console.log(first)
     this.setState({
       events: first,
       storage: first,
