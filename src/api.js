@@ -51,12 +51,12 @@ var locations
     const result = await axios.get(url);
     let filtered = result.data
 
-    if (filtered.length > 32) {
-      let i = filtered.length;
+    if (filtered.events.length > 32) {
+      let i = filtered.events.length;
       for (i; i > 32; i--) {
-        filtered.pop()
+        filtered.events.pop()
       }
-      console.log(filtered)
+      console.log(filtered.events)
     }
 
     if (filtered) {
