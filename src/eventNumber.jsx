@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class NumberOfEvents extends Component {
+class EventNumber extends Component {
   
   state = {
     number: this.props.length
@@ -10,8 +10,6 @@ class NumberOfEvents extends Component {
     this.setState({
       number: this.props.length
     })
-    console.log("mounted")
-    console.log(this.state.number)
   }
 
   changeInput = (event) => {
@@ -24,11 +22,10 @@ class NumberOfEvents extends Component {
 
   render() {
     let push = this.state.number
-    console.log(push)
     return (
       <div className="numberOfEvents">
         <h1>Number of Events:</h1>
-        <input
+        <input className="input"
           type="number"
           value={push}
           onChange={this.changeInput}
@@ -38,4 +35,4 @@ class NumberOfEvents extends Component {
   }
 }
 
-export default NumberOfEvents;
+export default EventNumber;

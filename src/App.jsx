@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import NumberOFEvents from './NumberofEvents';
+import EventNumber from './eventNumber';
 // import { mockData } from './mockData';
 import { getEvents, extractLocations } from './api';
 import "./nprogress.css";
@@ -22,7 +22,6 @@ class App extends Component {
 
 componentDidMount() {
   getEvents().then((first) => {
-    console.log(first)
     this.setState({
       events: first,
       storage: first,
@@ -56,9 +55,7 @@ passNumber = (number) => {
       console.log(this.state.storage)
       for (number; filtering > number; number++) {
         event.shift()
-        console.log(this.state.storage)
-      }
-      console.log(this.state.storage)
+      } 
       this.setState({
         events: event
       })
@@ -79,7 +76,7 @@ render() {
     return (
       <div className="App">
          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}  />
-         <NumberOFEvents length={this.state.number} passNumber={this.passNumber}/>
+         <EventNumber length={this.state.number} passNumber={this.passNumber}/>
          <EventList events={this.state.events} filterEvents={this.filterEvents} />
       </div>
     )
