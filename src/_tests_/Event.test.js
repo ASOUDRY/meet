@@ -1,14 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Event from '../Event';
+import { mockData } from '../mockData';
 
 describe('<Event/> component', () => {
-    let EventWrapper = shallow(<Event />)
-
-test('render initial box', () => {
-    expect(EventWrapper.find('.event')).toHaveLength(1);
+    test("event details to be closed on default", () => {
+        let EventWrapper = shallow(<Event event={mockData} />)
+        expect(EventWrapper.state('show')).toBe(false);
+    })
 })
-
-test('render see more button', () => {
-    expect(EventWrapper.find('.button')).toHaveLength(1);
-})})
