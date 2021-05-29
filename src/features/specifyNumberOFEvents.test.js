@@ -30,7 +30,9 @@ defineFeature(feature, test => {
         let Numberwrapper
     	when('the user changes the input number', () => {
             let test = 5;
-            Numberwrapper = mount(<EventNumber length={mockData.length} passNumber={console.log(test)}/>)
+            Numberwrapper = mount(<EventNumber length={mockData.length} passNumber={() => {
+                    
+            }}/>)
             Numberwrapper.find('input').simulate('change', {target: {value: 3}});
     	});
 
