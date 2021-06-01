@@ -27,7 +27,7 @@ export class Event extends React.Component {
             <Modal className="details" show={this.state.show} >
               <Modal.Header>
                 <Modal.Title>{this.props.event.summary}</Modal.Title>
-                <Button onClick={() => this.close()}>Close</Button>
+                <Button className="closing" onClick={() => this.close()}>Close</Button>
               </Modal.Header>
               <Modal.Body>
               <h4 className="location hidden" >{this.props.event.location}</h4>
