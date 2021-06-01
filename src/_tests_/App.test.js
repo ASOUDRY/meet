@@ -22,10 +22,6 @@ beforeAll(() => {
 })
 
 describe('<App /> integration', () => {
-// const AppWrapper;
-// beforeAll(() => {
-//   AppWrapper = mount(<App/> )
-// })
 
   test('App passes "locations" state as a prop to CitySearch', () => {
     const AppWrapper = mount(<App />);
@@ -44,6 +40,7 @@ describe('<App /> integration', () => {
     const selectedIndex = Math.floor(Math.random() * (suggestions.length));
     const selectedCity = suggestions[selectedIndex];
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
+    // await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
     const eventsToShow = allEvents.filter(event => event.location === selectedCity);
     expect(AppWrapper.state('events')).toEqual(eventsToShow);
