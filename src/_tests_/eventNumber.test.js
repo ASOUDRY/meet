@@ -17,7 +17,7 @@ describe('<NumberofEvents /> integration', () => {
           test("check changing the value of number of events", () => {
             const NumberWrapper = mount(<EventNumber length={32} passNumber={() => {}} />);
             // const NumberState = NumberWrapper.state('number')
-            NumberWrapper.find(".input").simulate("change", {
+            NumberWrapper.find(".eventNumberInput").simulate("change", {
               target: { value: 24 },
             });
             const NumberState = NumberWrapper.state('number')
