@@ -12,12 +12,12 @@ class EventNumber extends Component {
     })
   }
 
-  changeInput = (event) => {
-    const value = event.target.value;
+  changeInput = (input) => {
+    let newInput = input.target.value;
     this.setState({
-      number: value
+      number: newInput
     })
-    this.props.passNumber(value)
+    this.props.passNumber(newInput)
   }
 
   render() {
@@ -25,7 +25,7 @@ class EventNumber extends Component {
     return (
       <div className="numberOfEvents">
         <h1>Number of Events:</h1>
-        <input className="input"
+        <input className="eventNumberInput"
           type="number"
           value={push}
           onChange={this.changeInput}
