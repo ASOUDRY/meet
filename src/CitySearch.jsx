@@ -15,7 +15,7 @@ class CitySearch extends Component {
 
     
 
-  this.isClicked = (suggestion) => {
+  this.handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
       suggestions: []
@@ -30,7 +30,7 @@ class CitySearch extends Component {
     });
   };
 
-  handleItemClicked = (suggestion) => {
+  allCitiesAreSelected = (suggestion) => {
     this.setState({
       query: suggestion
     });
@@ -49,13 +49,13 @@ class CitySearch extends Component {
       />
        <ul className="suggestions">
           {this.state.suggestions.map((suggestion) => (
-            <li key={suggestion} onClick={() => this.isClicked(suggestion)}>
+            <li key={suggestion} onClick={() => this.handleItemClicked(suggestion)}>
                 {suggestion}
             </li>
           ))}
         </ul>
         <ul className="all" >
-            <li onClick={() => this.handleItemClicked("all")}>
+            <li onClick={() => this.allCitiesAreSelected("all")}>
               <b>See all cities</b>
             </li>
       </ul>
