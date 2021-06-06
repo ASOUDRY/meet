@@ -20,6 +20,8 @@ class App extends Component {
 
 componentDidMount() {
   getEvents().then((first) => {
+    console.log("component is mounted")
+    console.log(first);
     this.setState({
       events: first,
       number: first.length,
