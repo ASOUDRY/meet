@@ -46,7 +46,6 @@ class CitySearch extends Component {
   }
 
   render() {
-    console.log(this.state.query.length)
     return (
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
