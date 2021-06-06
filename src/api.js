@@ -46,7 +46,7 @@ var locations
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
     NProgress.done();
-    return JSON.parse(events)
+    return JSON.parse(events).events
     // { events: (JSON.parse(events).events)
     //   // , locations:   extractLocations(JSON.parse(events).events) 
     // };
