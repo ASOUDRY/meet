@@ -51,7 +51,8 @@ var locations
     const events = localStorage.getItem("lastEvents");
     NProgress.done();
     let lastEvents = JSON.parse(events)
-    return lastEvents  
+    console.log(lastEvents.events)
+    return lastEvents.events  
   }
   
   const token = await getAccessToken();
