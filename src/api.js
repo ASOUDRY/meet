@@ -40,16 +40,18 @@ var locations
 
     locations = extractLocations(mockData);
     localStorage.setItem("locations", JSON.stringify(locations));
-    return mockData;
+    localStorage.setItem("data", JSON.stringify(mockData));
+    let test = localStorage.getItem('data');
+    let newData = JSON.parse(test)
+    console.log(newData);
+    return newData;
   }
 
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
     NProgress.done();
-    return JSON.parse(events).events
-    // { events: (JSON.parse(events).events)
-    //   // , locations:   extractLocations(JSON.parse(events).events) 
-    // };
+    let lastEvents = JSON.parse(events)
+    return lastEvents  
   }
   
   const token = await getAccessToken();
