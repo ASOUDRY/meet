@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import EventNumber from './eventNumber';
 import { getEvents, extractLocations } from './api';
+import { OfflineAlert } from './Alert'
 import "./nprogress.css";
 
 class App extends Component {
@@ -27,6 +28,11 @@ componentDidMount() {
       number: first.length,
       locations: extractLocations(first)
     })
+    if (!navigator.online) {
+      this.setState({
+        infoText: "The app is offline. The events may no longer be up to date. In addition you cannot filter events by city at the moment. Please reconnect if you wish to do so."
+      })
+    }
   })
 }
 
@@ -74,6 +80,7 @@ render() {
     return (
       <div className="App">
          <CitySearch locations={this.state.locations} updateEvents={this.filterEventsByCity}  />
+         <OfflineAlert text={this.state.infoText} />
          <EventNumber length={this.state.number} passNumber={this.filterByNumber}/>
          <EventList events={this.state.events} 
         //  filterEvents={this.filterEvents} 
