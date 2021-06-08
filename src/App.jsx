@@ -28,7 +28,7 @@ componentDidMount() {
       number: first.length,
       locations: extractLocations(first)
     })
-    if (navigator.online === false) {
+    if (!navigator.onLine) {
       this.setState({
         infoText: "The app is offline. The events may no longer be up to date. In addition you cannot filter events by city at the moment. Please reconnect if you wish to do so."
       })
