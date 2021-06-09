@@ -6,6 +6,9 @@ import CitySearch from './CitySearch';
 import EventNumber from './eventNumber';
 import { getEvents, extractLocations } from './api';
 import { OfflineAlert } from './Alert'
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
+} from 'recharts';
 import "./nprogress.css";
 
 class App extends Component {
@@ -35,6 +38,17 @@ componentDidMount() {
     }
   })
 }
+
+getData = () => {
+  const {locations, events} = this.state;
+  const data = locations.map((location)=>{
+    const number = events.filter((event) => event.location === location).length
+    const city = location.split(' ').shift()
+    return {city, number};
+  })
+  return data;
+};
+
 
 filterEventsByCity = (location) => {
   getEvents().then((events) => {
@@ -82,6 +96,19 @@ render() {
          <CitySearch locations={this.state.locations} updateEvents={this.filterEventsByCity}  />
          <OfflineAlert text={this.state.infoText} />
          <EventNumber length={this.state.number} passNumber={this.filterByNumber}/>
+         <ResponsiveContainer height={400} >
+         <ScatterChart
+          margin={{
+            top: 20, right: 20, bottom: 20, left: 20,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis type="category" dataKey="city" name="city"/>
+          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false}/>
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter name="A school" data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
+         </ResponsiveContainer>
          <EventList events={this.state.events} 
         //  filterEvents={this.filterEvents} 
          />
