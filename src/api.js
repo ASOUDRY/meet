@@ -43,7 +43,6 @@ var locations
     localStorage.setItem("data", JSON.stringify(mockData));
     let test = localStorage.getItem('data');
     let newData = JSON.parse(test)
-    console.log(newData);
     return newData;
   }
 
