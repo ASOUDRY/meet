@@ -1,5 +1,5 @@
-import React, 
-{useEffect, useState} from 'react'
+// import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 
@@ -29,12 +29,9 @@ const EventGenre = ({events}) => {
     //     }
     //   ];
 
-      const [data, setData] = useState([]);
+      // const [data, setData] = useState([]);
 
-      useEffect(() => {
-        setData(() => getData());
-      }, [events]);
-    
+      
       const getData = () => {
         const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
         const data = genres.map((genre) => {
@@ -45,11 +42,17 @@ const EventGenre = ({events}) => {
       return data;
       }
 
+      // useEffect(() => {
+      //   setData(() => getData());
+      // }, [events]);
+    
+
     return (
       <ResponsiveContainer height={400}>
         <PieChart height={400}>
           <Pie 
-          data={data}
+          // data={data}
+          data={getData()}
           cx={200}
           cy={200}
           labelLine={false}
