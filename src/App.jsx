@@ -5,9 +5,11 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import EventNumber from './eventNumber';
 import { getEvents, extractLocations } from './api';
-import { OfflineAlert } from './Alert'
+import { OfflineAlert } from './Alert';
+// import { EventGenre }  from './EventGenre';
+import  EventGenre  from './EventGenre'
 import {
-  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import "./nprogress.css";
 
@@ -25,7 +27,6 @@ class App extends Component {
 componentDidMount() {
   getEvents().then((first) => {
     console.log("component is mounted")
-    console.log(first);
     this.setState({
       events: first,
       number: first.length,
@@ -96,12 +97,11 @@ render() {
          <CitySearch locations={this.state.locations} updateEvents={this.filterEventsByCity}  />
          <OfflineAlert text={this.state.infoText} />
          <EventNumber length={this.state.number} passNumber={this.filterByNumber}/>
-         <ResponsiveContainer height={400} >
-         <ScatterChart
-          margin={{
-            top: 20, right: 20, bottom: 20, left: 20,
-          }}
-        >
+         
+           <div className="data-vis-wrapper">
+           <EventGenre events={this.state.events}/>
+           <ResponsiveContainer height={400} >
+         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20, }} >
           <CartesianGrid />
           <XAxis type="category" dataKey="city" name="city"/>
           <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false}/>
@@ -109,6 +109,9 @@ render() {
           <Scatter name="A school" data={this.getData()} fill="#8884d8" />
         </ScatterChart>
          </ResponsiveContainer>
+           </div>
+         
+       
          <EventList events={this.state.events} 
         //  filterEvents={this.filterEvents} 
          />
